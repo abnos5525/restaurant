@@ -4,22 +4,14 @@ import {useGetUsersQuery} from "@/lib/reducers/userApi";
 import Spinner from "@/components/Spinner";
 import {BiPencil} from "react-icons/bi";
 import EditUserManager from "@/components/dashboard/EditUserManager";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 const UserManager = () =>{
     const {data, isLoading} = useGetUsersQuery()
 
     const [modal, setModal] = useState(false)
 
-    const [users, setUsers] = useState([])
-
     const [userId, setUserId] = useState(0)
-
-    useEffect(() => {
-        if(!isLoading) {
-            setUsers(data)
-        }
-    }, [data,isLoading]);
 
     const editUserModal = (id) =>{
         setUserId(id)
@@ -41,7 +33,7 @@ const UserManager = () =>{
             </div>
 
             {isLoading ? <Spinner/> :
-                users.map((user)=>(
+                data.map((user)=>(
                 <div key={user.id} className="flex items-center py-4">
                     <div className="w-1/3 ml-4">
                         <div className="text-sm text-center">{user.name}</div>

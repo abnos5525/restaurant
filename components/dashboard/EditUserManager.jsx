@@ -2,7 +2,7 @@ import {updateUserSchema} from "@/components/dashboard/editUserValidation";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {useGetUserQuery, useUpdateUserMutation} from "@/lib/reducers/userApi";
 import Spinner from "@/components/Spinner";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {Context} from "@/context/ContextApp";
 import {toast} from "react-toastify";
 
@@ -13,9 +13,17 @@ const EditUserManager = ({userId,setModal}) =>{
 
     const [updateUser] = useUpdateUserMutation()
 
+    const [role, setRole] = useState('user')
+
+    const onRoleChange = e =>{
+        const { value } = e.target;
+        setRole(value);
+        console.log(value)
+    }
+
     const handleUpdate = async (values) =>{
         try {
-            const {name,phone,address,role} = values
+            const {name,phone,address} = values
 
             // بررسی تغییرات name و address
             const isNameChanged = name !== data.name;
@@ -61,7 +69,7 @@ const EditUserManager = ({userId,setModal}) =>{
                         phone: data.phone,
                         address: data.address,
                         role: data.role
-                    }} validationSchema={updateUserSchema} onSubmit={handleUpdate} >
+                    }} validationSchema={updateUserSchema} onSubmit={handleUpdate}>
                         <Form className="mt-10">
                             <div className="flex flex-col mb-6">
                                 <label htmlFor="name"
@@ -98,10 +106,11 @@ const EditUserManager = ({userId,setModal}) =>{
                                 </div>
                             </div>
                             <div className="flex flex-col mb-6">
-                                <label htmlFor="phone"
+                                <label htmlFor="role"
                                        className={`mb-1 text-xs sm:text-sm tracking-wide 
-                                       ${dark ? 'text-gray-300' : 'text-gray-600'}`}>کاربر:</label>
-                                <select name="role" defaultValue={data.role} className="text-sm sm:text-base pl-10 pr-4
+                                       ${dark ? 'text-gray-300' : 'text-gray-600'}`}>نقش کاربر:</label>
+                                <select onChange={onRoleChange} name="role" defaultValue={data.role}
+                                        className="text-sm sm:text-base pl-10 pr-4
                          rounded-lg border border-gray-600 py-2 focus:outline-none focus:border-blue-400 w-full text-black">
                                     <option value="admin">
                                         ادمین
@@ -110,6 +119,7 @@ const EditUserManager = ({userId,setModal}) =>{
                                         کاربر
                                     </option>
                                 </select>
+                                <ErrorMessage name="role" render={msg => <div className="text-red-700">{msg}</div>}/>
                             </div>
                             <div className="flex flex-col mb-6">
                                 <label htmlFor="address" className={`mb-1 text-xs 
