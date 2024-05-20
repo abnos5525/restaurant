@@ -1,17 +1,31 @@
-import {Button} from "@mui/material";
+import {useContext} from "react";
+import {Context} from "@/context/ContextApp";
 
-const QtyInput = ({incrementQty, qty, decrementQty}) =>{
-    return(
-        <div className="flex flex-row w-50 h-10 relative mt-1 mx-3">
-            <Button variant="contained" onClick={incrementQty} sx={{width:"10px",height:"20px",mt:1}} >
+const QtyInput = ({ incrementQty, qty, decrementQty }) => {
+
+    return (
+        <div className="flex flex-row w-full md:w-50 h-10 relative mx-auto md:mx-5">
+
+            <button
+                className="p-2 bg-amber-400 rounded-r-lg w-1/3 md:w-1/4"
+                onClick={incrementQty}
+            >
                 +
-            </Button>
-            <input type="text" value={qty} className="text-center" disabled style={{width:"100px"}}/>
-            <Button variant="contained" onClick={decrementQty} sx={{width:"10px",height:"20px",mt:1}}>
+            </button>
+            <input
+                type="text"
+                value={qty ? qty : 0}
+                className="text-center w-1/5 bg-white text-gray-600"
+                disabled
+            />
+            <button
+                className="p-2 bg-amber-400 rounded-l-lg text-center w-1/3 md:w-1/4"
+                onClick={decrementQty}
+            >
                 -
-            </Button>
+            </button>
         </div>
-    )
-}
+    );
+};
 
-export default QtyInput
+export default QtyInput;

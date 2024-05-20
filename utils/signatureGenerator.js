@@ -1,5 +1,6 @@
-export const generateSignature = (token) => {
+import {createHmac } from "crypto"
+
+export const signatureGenerator = (token) => {
     const secretKey = process.env.SIGNITURE
-    const signature = crypto.createHmac('sha256', secretKey).update(token).digest('hex')
-    return signature;
+    return createHmac('sha256', secretKey).update(token).digest('hex') ;
 }

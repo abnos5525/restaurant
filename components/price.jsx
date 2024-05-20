@@ -1,4 +1,5 @@
 import {NumberFormatBase, useNumericFormat} from "react-number-format"
+import {memo} from "react";
 
 const persianNumeral = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
 
@@ -40,4 +41,4 @@ function CustomNumeralNumericFormat(props) {
     );
 }
 
-export default CustomNumeralNumericFormat
+export default memo(CustomNumeralNumericFormat)

@@ -1,0 +1,135 @@
+{
+  "foods": [
+    {
+      "id": "1",
+      "name": "مرغ",
+      "price": 120,
+      "category": "1",
+      "image": "morgh.jpg"
+    },
+    {
+      "id": "2",
+      "name": "قرمه سبزی",
+      "price": 160,
+      "category": "1",
+      "image": "ghorme.jpg"
+    },
+    {
+      "id": "3",
+      "name": "قیمه",
+      "price": 230,
+      "category": "1",
+      "image": "gheime.jpg"
+    },
+    {
+      "id": "4",
+      "name": "کباب",
+      "price": 250,
+      "category": "1",
+      "image": "kabab.jpg"
+    },
+    {
+      "id": "5",
+      "name": "کباب شامی",
+      "price": 200,
+      "category": "1",
+      "image": "shami.jpg"
+    },
+    {
+      "id": "6",
+      "name": "پیتزا",
+      "price": 195,
+      "category": "2",
+      "image": "pizza.jpg"
+    },
+    {
+      "id": "7",
+      "name": "همبرگر",
+      "price": 260,
+      "category": "2",
+      "image": "hamber.jpg"
+    },
+    {
+      "id": "8",
+      "name": "سیب زمینی",
+      "price": 110,
+      "category": "2",
+      "image": "potato.jpg"
+    },
+    {
+      "id": "9",
+      "name": "سالاد ماکارونی",
+      "price": 90,
+      "category": "3",
+      "image": "salad1.jpg"
+    },
+    {
+      "id": "10",
+      "name": "سالاد سزار",
+      "price": 100,
+      "category": "3",
+      "image": "salad2.jpg"
+    },
+    {
+      "id": "11",
+      "name": "سالاد ماهی",
+      "price": 100,
+      "category": "3",
+      "image": "salad3.jpg"
+    },
+    {
+      "id": "12",
+      "name": "سالاد ماهی",
+      "price": 130,
+      "category": "3",
+      "image": "salad4.jpg"
+    }
+  ],
+  "users": [
+    {
+      "id": "HG309q9Q964DAdHGNdfdfgn",
+      "name": "حسین حیدری",
+      "username": "admin",
+      "phone": "09223715672",
+      "password": "1234",
+      "role": "admin",
+      "foods": [
+        "1",
+        "2"
+      ],
+      "address": "تهران واوان"
+    },
+    {
+      "id": "klko309fiq6D4M4DAdGDF",
+      "name": "علی حیدری2",
+      "username": "ali123",
+      "phone": "09226687672",
+      "password": "123456",
+      "role": "user",
+      "foods": [
+        "3"
+      ],
+      "address": ""
+    },
+    {
+      "id": "uyIWpg1INujv-GQSvVFmV",
+      "name": "امیرحسین",
+      "username": "amir",
+      "phone": "09213789972",
+      "password": "1234",
+      "role": "user",
+      "foods": [],
+      "address": ""
+    },
+    {
+      "id": "AuXsBcR3E-pBazdpTJabB",
+      "name": "رضا سلامت",
+      "username": "reza12",
+      "phone": "09125710520",
+      "password": "1234",
+      "role": "user",
+      "foods": [],
+      "address": "تهران"
+    }
+  ]
+}

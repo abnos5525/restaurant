@@ -1,28 +1,22 @@
-'use client'
-
 import {signatureGenerator} from "@/utils/signatureGenerator";
 import {logOut} from "@/utils/logOut";
-import {NextResponse} from "next/server";
 
-export function checkLogin(req){
+export function CheckLogin(router){
+    const token = sessionStorage.getItem("isLoggedIn")
+    const expirationTime = sessionStorage.getItem('expirationTime');
+    const signature = sessionStorage.getItem('signature');
+    const userId = sessionStorage.getItem('userId');
+    const isLoggedIn = [token && expirationTime && signature && userId].every(Boolean)
 
-    const token = localStorage.getItem("isLoggedIn")
-    const expirationTime = localStorage.getItem('expirationTime');
-    const signature = localStorage.getItem('signature');
-    const isLoggedIn = [token && expirationTime && signature].every(Boolean)
-
-    if (!isLoggedIn) {
-        return NextResponse.redirect(new URL('/'), req.url)
-    }else{
+    if (isLoggedIn) {
         const currentTime = new Date().getTime();
         if (currentTime > expirationTime) {
             logOut()
-            return NextResponse.redirect(new URL('/'), req.url)
+            router.push("/login")
         } else {
             const generatedSignature = signatureGenerator(token)
-            if (generatedSignature!== signature) {
+            if (generatedSignature == signature) {
                 logOut()
-                return NextResponse.redirect(new URL('/'), req.url)
             }
         }
     }

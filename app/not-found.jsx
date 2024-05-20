@@ -1,11 +1,11 @@
 export default function NotFound(){
     return(
         <section>
-            <div className="bg-black text-white">
-                <div className="flex h-screen">
-                    <div className="m-auto text-center">
-                        <div>
-                            <svg width="631" height="379" viewBox="0 0 631 379" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div className="bg-white text-white m-auto">
+                <div className="flex h-screen m-auto">
+                    <div className="m-auto text-center h-fit">
+                        <div className="lg:scale-100 md:scale-50 sm:scale-50 xs:scale-50 m-auto">
+                            <svg width="631" viewBox="0 0 631 379" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0)">
                                     <path
                                         d="M317.524 379C488.625 379 627.33 368.857 627.33 356.346C627.33 343.834 488.625 333.692 317.524 333.692C146.423 333.692 7.71875 343.834 7.71875 356.346C7.71875 368.857 146.423 379 317.524 379Z"
@@ -181,16 +181,18 @@ export default function NotFound(){
                             </svg>
 
                         </div>
-                        <p className="text-sm md:text-base text-yellow-300 p-2 mb-4">
-                            صفحه موردنظر یافت نشد!
-                        </p>
-                        <a href="/"
-                           className="bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent">
-                            صفحه اصلی
-                        </a>
                     </div>
                 </div>
+
+                <p className="text-2xl text-yellow-800 p-10 mb-4 text-center">
+                    صفحه موردنظر یافت نشد!
+                </p>
+                <a href="/"
+                   className="bg-transparent hover:bg-yellow-300 text-yellow-800 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent text-center m-auto block">
+                    صفحه اصلی
+                </a>
             </div>
+
         </section>
     )
 }
