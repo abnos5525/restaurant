@@ -18,7 +18,6 @@ const EditUserManager = ({userId,setModal}) =>{
     const onRoleChange = e =>{
         const { value } = e.target;
         setRole(value);
-        console.log(value)
     }
 
     const handleUpdate = async (values) =>{
