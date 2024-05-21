@@ -130,6 +130,51 @@
       "role": "user",
       "foods": [],
       "address": "تهران"
+    },
+    {
+      "id": "HG309q9Q964dfghdfdsdfdfgn",
+      "name": "حسن سینایی",
+      "username": "admin",
+      "phone": "09223715672",
+      "password": "1234",
+      "role": "admin",
+      "foods": [
+        "1",
+        "2"
+      ],
+      "address": "تهران واوان"
+    },
+    {
+      "id": "klko309ffgfb4M4DAdGDF",
+      "name": "احمد حسنی",
+      "username": "ali123",
+      "phone": "09226687672",
+      "password": "123456",
+      "role": "admin",
+      "foods": [
+        "3"
+      ],
+      "address": ""
+    },
+    {
+      "id": "udrf654IWfgdv-GQSvVFmV",
+      "name": "امیرمحمد",
+      "username": "amir",
+      "phone": "09213789972",
+      "password": "1234",
+      "role": "user",
+      "foods": [],
+      "address": ""
+    },
+    {
+      "id": "AuXsdfg3E-pB32pTJabB",
+      "name": "سینا احمدی",
+      "username": "sina45",
+      "phone": "09125710520",
+      "password": "1234",
+      "role": "user",
+      "foods": [],
+      "address": "تهران"
     }
   ]
 }
