@@ -3,7 +3,7 @@
 import {useGetUsersQuery} from "@/lib/reducers/userApi";
 import Spinner from "@/components/Spinner";
 import {BiPencil} from "react-icons/bi";
-import EditUserManager from "@/components/dashboard/EditUserManager";
+import EditUserManager from "@/components/dashboard/users/EditUserManager";
 import {useContext, useEffect, useState} from "react";
 import Pagination from "@/components/Pagination";
 import {Context} from "@/context/ContextApp";

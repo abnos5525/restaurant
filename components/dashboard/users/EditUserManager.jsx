@@ -1,8 +1,8 @@
-import {updateUserSchema} from "@/components/dashboard/editUserValidation";
+import {updateUserSchema} from "@/components/dashboard/users/editUserValidation";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {useGetUserQuery, useUpdateUserMutation} from "@/lib/reducers/userApi";
 import Spinner from "@/components/Spinner";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {Context} from "@/context/ContextApp";
 import {toast} from "react-toastify";
 
@@ -15,6 +15,12 @@ const EditUserManager = ({userId,setModal}) =>{
 
     const [role, setRole] = useState('user')
 
+    useEffect(() => {
+        if (!isLoading) {
+            setRole(data.role);
+        }
+    }, [data]);
+
     const onRoleChange = e =>{
         const { value } = e.target;
         setRole(value);
@@ -24,18 +30,15 @@ const EditUserManager = ({userId,setModal}) =>{
         try {
             const {name,phone,address} = values
 
-            // بررسی تغییرات name و address
             const isNameChanged = name !== data.name;
             const isAddressChanged = address !== data.address;
             const isRoleChanged = role !== data.role;
 
-            // اگر هیچ تغییری در name و address نبوده و فیلدهای رمز عبور هم خالی هستند
             if (!isNameChanged && !isAddressChanged && !isRoleChanged) {
                 setModal(false)
                 return;
             }
 
-            // اگر تغییرات در name یا address وجود داشته باشد یا رمز عبور‌ها پر شده باشند
             if (isNameChanged || isAddressChanged || isRoleChanged) {
                 await updateUser({
                     ...data,
@@ -108,7 +111,7 @@ const EditUserManager = ({userId,setModal}) =>{
                                 <label htmlFor="role"
                                        className={`mb-1 text-xs sm:text-sm tracking-wide 
                                        ${dark ? 'text-gray-300' : 'text-gray-600'}`}>نقش کاربر:</label>
-                                <select onChange={onRoleChange} name="role" defaultValue={data.role}
+                                <Field as="select" onChange={onRoleChange} name="role" value={role}
                                         className="text-sm sm:text-base pl-10 pr-4
                          rounded-lg border border-gray-600 py-2 focus:outline-none focus:border-blue-400 w-full text-black">
                                     <option value="admin">
@@ -117,7 +120,7 @@ const EditUserManager = ({userId,setModal}) =>{
                                     <option value="user">
                                         کاربر
                                     </option>
-                                </select>
+                                </Field>
                                 <ErrorMessage name="role" render={msg => <div className="text-red-700">{msg}</div>}/>
                             </div>
                             <div className="flex flex-col mb-6">

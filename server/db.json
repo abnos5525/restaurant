@@ -59,7 +59,7 @@
     {
       "id": "9",
       "name": "سالاد ماکارونی",
-      "price": 90,
+      "price": 110,
       "category": "3",
       "image": "salad1.jpg"
     },
@@ -79,7 +79,7 @@
     },
     {
       "id": "12",
-      "name": "سالاد ماهی",
+      "name": "سالاد ماهی تن",
       "price": 130,
       "category": "3",
       "image": "salad4.jpg"
@@ -137,7 +137,7 @@
       "username": "admin",
       "phone": "09223715672",
       "password": "1234",
-      "role": "admin",
+      "role": "user",
       "foods": [
         "1",
         "2"
@@ -150,7 +150,7 @@
       "username": "ali123",
       "phone": "09226687672",
       "password": "123456",
-      "role": "admin",
+      "role": "user",
       "foods": [
         "3"
       ],

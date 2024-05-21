@@ -2,7 +2,8 @@
 
 import {useContext} from "react";
 import {Context} from "@/context/ContextApp";
-import UserManager from "@/components/dashboard/UserManager";
+import UserManager from "@/components/dashboard/users/UserManager";
+import FoodManager from "@/components/dashboard/foods/FoodManager";
 
 const Dashboard = () =>{
 
@@ -14,6 +15,9 @@ const Dashboard = () =>{
                 {
                     dashLink === 1 ?
                         <UserManager/>
+                        :
+                        dashLink === 2 ?
+                        <FoodManager/>
                         :
                         null
                 }
