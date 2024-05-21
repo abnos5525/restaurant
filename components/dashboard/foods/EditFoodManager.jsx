@@ -14,16 +14,23 @@ const EditFoodManager = ({foodId,setModal}) =>{
     const [updateFood] = useUpdateFoodMutation()
 
     const [category, setCategory] = useState("1")
+    const [image, setImage] = useState("1")
 
     useEffect(() => {
         if (!isLoading) {
             setCategory(data.category);
+            setImage(data.image);
         }
     }, [data]);
 
     const onCategoryChange = e =>{
         const { value } = e.target;
         setCategory(value);
+    }
+
+    const onImageChange = e =>{
+        const { value } = e.target;
+        setImage(value);
     }
 
     const handleUpdate = async (values) =>{
@@ -56,7 +63,7 @@ const EditFoodManager = ({foodId,setModal}) =>{
     }
 
     return(
-        <div className="w-4/5 fixed bg-gray-500 left-0 right-0 top-24 m-auto p-5 rounded-lg">
+        <div className="w-4/5 fixed bg-gray-500 left-0 right-0 top-20 m-auto p-5 rounded-lg">
             <button onClick={()=> setModal(false)}
                     className="w-fit px-3 py-1 rounded-full border-indigo-800 border-2 absolute left-4 hover:bg-indigo-800">
                 X
@@ -67,7 +74,8 @@ const EditFoodManager = ({foodId,setModal}) =>{
                     <Formik initialValues={{
                         name:data.name,
                         price:data.price,
-                        category: data.category
+                        category: data.category,
+                        image: data.image
                     }} validationSchema={updateFoodSchema} onSubmit={handleUpdate}>
                         <Form className="mt-10">
                             <div className="flex flex-col mb-6">
@@ -106,6 +114,23 @@ const EditFoodManager = ({foodId,setModal}) =>{
                                     <option value="3">سالاد</option>
                                 </Field>
                                 <ErrorMessage name="category" render={msg => <div className="text-red-700">{msg}</div>} />
+                            </div>
+
+                            <div className="flex flex-col mb-6">
+                                <label htmlFor="image"
+                                       className={`mb-1 text-xs sm:text-sm tracking-wide ${dark ? 'text-gray-300' : 'text-gray-600'}`}>عکس:</label>
+                                <div>
+                                    {/*<input type="file" name="image" accept="image/*"*/}
+                                    {/*       className="text-sm sm:text-base pl-10 pr-4 w-fit*/}
+                                    {/*            rounded-lg border border-gray-600 py-2 text-black float-right"*/}
+                                    {/*       onChange={onImageChange}*/}
+                                    {/*/>*/}
+                                    {data.image && (
+                                        <img src={`${process.env.SERVER_URL}/images/foods/${image}`}
+                                             alt="Food Image" className="w-32 h-32 object-cover float-left rounded-lg" />
+                                    )}
+                                    <ErrorMessage name="image" render={msg => <div className="text-red-700">{msg}</div>} />
+                                </div>
                             </div>
 
                             <div className="flex w-full">

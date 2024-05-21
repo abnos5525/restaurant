@@ -120,6 +120,9 @@ const EditUserManager = ({userId,setModal}) =>{
                                     <option value="user">
                                         کاربر
                                     </option>
+                                    <option value="banned">
+                                        مسدود
+                                    </option>
                                 </Field>
                                 <ErrorMessage name="role" render={msg => <div className="text-red-700">{msg}</div>}/>
                             </div>

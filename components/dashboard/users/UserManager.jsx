@@ -58,7 +58,7 @@ const UserManager = () =>{
                     placeholder="جستجوی کاربر..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-4/5 p-2 border border-gray-300 rounded mb-4 text-black"
+                    className={`w-4/5 p-2 border ${dark ? 'border-gray-300' : 'border-gray-600'} rounded mb-4 text-black`}
                 />
             </div>
 
@@ -82,7 +82,7 @@ const UserManager = () =>{
                     </div>
                     <div className="w-1/3 text-center">
                         <span className={`px-2 inline-flex text-xs leading-5 rounded-full text-white
-                         bg-green-100 ${user.role === "admin" ? 'bg-yellow-600' : "bg-green-600"}`}>
+                         bg-green-100 ${user.role === "admin" ? 'bg-yellow-600' : user.role === "banned" ? "bg-red-600" : "bg-green-600"}`}>
                             {user.role}
                         </span>
                     </div>

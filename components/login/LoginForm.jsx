@@ -24,6 +24,12 @@ const LoginForm = () =>{
         try {
             const {username, password} = values
             const user = data.find(u => u.username === username && u.password === password)
+
+            if(user && user.role === "banned"){
+                toast.error("این نام کاربری مسدود است", {position:"bottom-left"})
+                return
+            }
+
             if(user){
                 const token = tokenGenerator()
                 const expirationTime = new Date(Date.now() + 24 * 60 * 60 * 1000) // 24 hours

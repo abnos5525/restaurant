@@ -58,7 +58,7 @@ const FoodManager = () =>{
                     placeholder="جستجوی غذا..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-4/5 p-2 border border-gray-300 rounded mb-4 text-black"
+                    className={`w-4/5 p-2 border ${dark ? 'border-gray-300' : 'border-gray-600'} rounded mb-4 text-black`}
                 />
             </div>
 

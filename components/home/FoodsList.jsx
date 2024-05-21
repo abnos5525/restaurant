@@ -47,7 +47,7 @@ const FoodsList = ({foods,foodsCat}) =>{
 
                         <img className="rounded-t-lg text-center m-auto"
                              style={{width:"250px",height:"250px"}}
-                             src={`${process.env.SERVER_URL}/images/foods/${food.image}`} alt="عکس"/>
+                             src={`${process.env.SERVER_URL}/images/foods/${food.image}`} alt="Food Image"/>
 
                         {
                             (cartItems[food.id]?.cartQty > 0 && userInfo.length !== 0) ?
