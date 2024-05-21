@@ -40,7 +40,7 @@ const EditUserForm = ()=>{
                     if (oldPassword !== "" && userInfo.password !== oldPassword) {
                         setPasswordError("رمزعبور قبلی اشتباه است");
                         return;
-                    } else if (oldPassword === newPassword) {
+                    } else if (oldPassword === userInfo.password) {
                         setPasswordError("رمزعبور جدید تکراری است");
                         return;
                     }

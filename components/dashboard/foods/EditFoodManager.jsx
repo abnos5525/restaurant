@@ -13,8 +13,8 @@ const EditFoodManager = ({foodId,setModal}) =>{
 
     const [updateFood] = useUpdateFoodMutation()
 
-    const [category, setCategory] = useState("1")
-    const [image, setImage] = useState("1")
+    const [category, setCategory] = useState("")
+    const [image, setImage] = useState("")
 
     useEffect(() => {
         if (!isLoading) {
@@ -28,10 +28,12 @@ const EditFoodManager = ({foodId,setModal}) =>{
         setCategory(value);
     }
 
-    const onImageChange = e =>{
-        const { value } = e.target;
-        setImage(value);
-    }
+    // const onImageChange = e =>{
+    //     const file = e.target.files[0];
+    //     if (file) {
+    //         setImage(file);
+    //     }
+    // }
 
     const handleUpdate = async (values) =>{
         try {
@@ -51,7 +53,7 @@ const EditFoodManager = ({foodId,setModal}) =>{
                     ...data,
                     name,
                     price,
-                    category
+                    category,
                 }).unwrap();
                 toast.success("با موفقیت ویرایش شد", {position:"bottom-left"})
             }
