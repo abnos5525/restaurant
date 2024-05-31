@@ -23,25 +23,25 @@ const EditUserForm = ()=>{
             const {name,address,oldPassword,newPassword} = values
 
             // بررسی تغییرات name و address
-            const isNameChanged = name !== userInfo.name;
-            const isAddressChanged = address !== userInfo.address;
+            const isNameChanged = name !== userInfo.name
+            const isAddressChanged = address !== userInfo.address
 
             // بررسی اینکه آیا فیلدهای رمز عبور پر شده‌اند یا نه
-            const isPasswordProvided = oldPassword !== "" || newPassword !== "";
+            const isPasswordProvided = oldPassword !== "" || newPassword !== ""
 
             // اگر هیچ تغییری در name و address نبوده و فیلدهای رمز عبور هم خالی هستند
             if (!isNameChanged && !isAddressChanged && !isPasswordProvided) {
-                router.push("/");
-                return;
+                router.push("/")
+                return
             }
 
             // اگر تغییرات در name یا address وجود داشته باشد یا رمز عبور‌ها پر شده باشند
             if (isNameChanged || isAddressChanged || (oldPassword !== "" && newPassword !== "")) {
                     if (oldPassword !== "" && userInfo.password !== oldPassword) {
-                        setPasswordError("رمزعبور قبلی اشتباه است");
+                        setPasswordError("رمزعبور قبلی اشتباه است")
                         return;
                     } else if (oldPassword === userInfo.password) {
-                        setPasswordError("رمزعبور جدید تکراری است");
+                        setPasswordError("رمزعبور جدید تکراری است")
                         return;
                     }
 

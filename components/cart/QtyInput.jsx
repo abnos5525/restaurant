@@ -1,6 +1,3 @@
-import {useContext} from "react";
-import {Context} from "@/context/ContextApp";
-
 const QtyInput = ({ incrementQty, qty, decrementQty }) => {
 
     return (
