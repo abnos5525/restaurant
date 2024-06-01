@@ -175,6 +175,30 @@
       "role": "user",
       "foods": [],
       "address": "تهران"
+    },
+    {
+      "id": "9969",
+      "csrfToken": "df83f66cd94f78764b66da936221a7b3eff3851e5065d31cc0f3b4a0c62e92f6",
+      "username": "admin",
+      "password": "123456"
+    },
+    {
+      "id": "6302",
+      "csrfToken": "df83f66cd94f78764b66da936221a7b3eff3851e5065d31cc0f3b4a0c62e92f6",
+      "username": "admin",
+      "password": "1234"
+    },
+    {
+      "id": "6890",
+      "csrfToken": "df83f66cd94f78764b66da936221a7b3eff3851e5065d31cc0f3b4a0c62e92f6",
+      "username": "admin",
+      "password": "12345"
+    },
+    {
+      "id": "e102",
+      "csrfToken": "df83f66cd94f78764b66da936221a7b3eff3851e5065d31cc0f3b4a0c62e92f6",
+      "username": "admin",
+      "password": "1234"
     }
   ]
 }

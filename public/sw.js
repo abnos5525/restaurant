@@ -4,12 +4,16 @@ if (workbox) {
     console.log(`WB IS OK`);
 
     workbox.setConfig({ debug: true });
-
     workbox.core.setCacheNameDetails({
-        prefix: 'TEST-SW',
+        prefix: 'WB-SW',
         suffix: 'v1'
     });
 
+    const cachelist = [
+        'WB-SW-precache-v1',
+        'WB-SW-image-cache',
+        'offline-cache'
+    ]; // لیستی از کش‌هایی که باید حفظ شوند
 
     self.addEventListener('install', (event) => {
         const offlinePage = '/offline.html';
@@ -18,13 +22,6 @@ if (workbox) {
         );
     });
 
-    workbox.precaching.precacheAndRoute([]);
-
-    self.addEventListener("message", event => {
-        if (event.data && event.data.type === "SKIP_WAITING") {
-            skipWaiting();
-        }
-    });
 
     workbox.routing.registerRoute(
         /\.(?:png|jpg|jpeg|svg|gif)$/,
@@ -39,11 +36,25 @@ if (workbox) {
         })
     );
 
+    self.addEventListener('activate', event => {
+        event.waitUntil(
+            caches.keys().then(cacheNames => {
+                return Promise.all(
+                    cacheNames.map(cacheName => {
+                        if (!cachelist.includes(cacheName)) {
+                            return caches.delete(cacheName);
+                        }
+                    })
+                );
+            })
+        );
+    });
 
     self.addEventListener('fetch', event => {
         if (event.request.mode === 'navigate') {
+            let req = event.request
             event.respondWith(
-                fetch(event.request).catch(() => caches.match('/offline.html'))
+                fetch(req).catch(() => caches.match('/offline.html'))
             );
         }
     });
