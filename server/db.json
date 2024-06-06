@@ -87,118 +87,14 @@
   ],
   "users": [
     {
-      "id": "HG309q9Q964DAdHGNdfdfgn",
-      "name": "حسین",
+      "id": "jHq_O083C_XMEDnl04j8b",
+      "name": "hossein",
       "username": "admin",
-      "phone": "09223715672",
-      "password": "1234",
+      "phone": "09223715671",
+      "password": "$2a$10$aMGQGdQV29qQC4FZsWztyO6cLs2h36SPjWvjFwvBsL0OU4e06aA1S",
       "role": "admin",
-      "foods": [
-        "1",
-        "2"
-      ],
-      "address": "تهران واوان"
-    },
-    {
-      "id": "klko309fiq6D4M4DAdGDF",
-      "name": "علی حیدری",
-      "username": "ali123",
-      "phone": "09226687672",
-      "password": "123456",
-      "role": "user",
-      "foods": [
-        "3"
-      ],
-      "address": ""
-    },
-    {
-      "id": "uyIWpg1INujv-GQSvVFmV",
-      "name": "امیرحسین",
-      "username": "amir",
-      "phone": "09213789972",
-      "password": "1234",
-      "role": "user",
-      "foods": [],
-      "address": ""
-    },
-    {
-      "id": "AuXsBcR3E-pBazdpTJabB",
-      "name": "رضا سلامت",
-      "username": "reza12",
-      "phone": "09125710520",
-      "password": "1234",
-      "role": "user",
       "foods": [],
       "address": "تهران"
-    },
-    {
-      "id": "HG309q9Q964dfghdfdsdfdfgn",
-      "name": "حسن سینایی",
-      "username": "admin",
-      "phone": "09223715672",
-      "password": "1234",
-      "role": "user",
-      "foods": [
-        "1",
-        "2"
-      ],
-      "address": "تهران واوان"
-    },
-    {
-      "id": "klko309ffgfb4M4DAdGDF",
-      "name": "احمد حسنی",
-      "username": "ali123",
-      "phone": "09226687672",
-      "password": "123456",
-      "role": "user",
-      "foods": [
-        "3"
-      ],
-      "address": ""
-    },
-    {
-      "id": "udrf654IWfgdv-GQSvVFmV",
-      "name": "امیرمحمد",
-      "username": "amir",
-      "phone": "09213789972",
-      "password": "1234",
-      "role": "user",
-      "foods": [],
-      "address": ""
-    },
-    {
-      "id": "AuXsdfg3E-pB32pTJabB",
-      "name": "سینا احمدی",
-      "username": "sina45",
-      "phone": "09125710520",
-      "password": "1234",
-      "role": "user",
-      "foods": [],
-      "address": "تهران"
-    },
-    {
-      "id": "9969",
-      "csrfToken": "df83f66cd94f78764b66da936221a7b3eff3851e5065d31cc0f3b4a0c62e92f6",
-      "username": "admin",
-      "password": "123456"
-    },
-    {
-      "id": "6302",
-      "csrfToken": "df83f66cd94f78764b66da936221a7b3eff3851e5065d31cc0f3b4a0c62e92f6",
-      "username": "admin",
-      "password": "1234"
-    },
-    {
-      "id": "6890",
-      "csrfToken": "df83f66cd94f78764b66da936221a7b3eff3851e5065d31cc0f3b4a0c62e92f6",
-      "username": "admin",
-      "password": "12345"
-    },
-    {
-      "id": "e102",
-      "csrfToken": "df83f66cd94f78764b66da936221a7b3eff3851e5065d31cc0f3b4a0c62e92f6",
-      "username": "admin",
-      "password": "1234"
     }
   ]
 }

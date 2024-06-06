@@ -10,6 +10,7 @@ import {signatureGenerator} from "@/utils/signatureGenerator";
 import {useContext, useState} from "react";
 import {Context} from "@/context/ContextApp";
 import {nanoid} from "@reduxjs/toolkit";
+import bcrypt from 'bcryptjs';
 
 const RegisterForm = ()=>{
 
@@ -29,13 +30,14 @@ const RegisterForm = ()=>{
                 setExistingUserError("کاربری با این نام کاربری وجود دارد")
                 return
             }
+            const hashedPassword = await bcrypt.hash(password, 10)
             const id = nanoid()
             const saveInfo = {
                 id,
                 name,
                 username,
                 phone,
-                password,
+                password: hashedPassword,
                 role: 'user',
                 foods:[],
                 address:""

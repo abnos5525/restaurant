@@ -8,6 +8,7 @@ import {useContext, useState} from "react";
 import {Context} from "@/context/ContextApp";
 import Link from "next/link";
 import {updateUserSchema} from "@/components/updateUser/editUserValidation";
+import bcrypt from 'bcryptjs';
 
 const EditUserForm = ()=>{
 
@@ -20,49 +21,54 @@ const EditUserForm = ()=>{
 
     const handleUpdate = async (values) =>{
         try {
-            const {name,address,oldPassword,newPassword} = values
+            const { name, address, oldPassword, newPassword } = values;
 
             // بررسی تغییرات name و address
-            const isNameChanged = name !== userInfo.name
-            const isAddressChanged = address !== userInfo.address
+            const isNameChanged = name !== userInfo.name;
+            const isAddressChanged = address !== userInfo.address;
 
             // بررسی اینکه آیا فیلدهای رمز عبور پر شده‌اند یا نه
-            const isPasswordProvided = oldPassword !== "" || newPassword !== ""
+            const isPasswordProvided = oldPassword !== "" || newPassword !== "";
 
             // اگر هیچ تغییری در name و address نبوده و فیلدهای رمز عبور هم خالی هستند
             if (!isNameChanged && !isAddressChanged && !isPasswordProvided) {
-                router.push("/")
-                return
+                router.push("/");
+                return;
             }
 
             // اگر تغییرات در name یا address وجود داشته باشد یا رمز عبور‌ها پر شده باشند
             if (isNameChanged || isAddressChanged || (oldPassword !== "" && newPassword !== "")) {
-                    if (oldPassword !== "" && userInfo.password !== oldPassword) {
-                        setPasswordError("رمزعبور قبلی اشتباه است")
-                        return;
-                    } else if (oldPassword === userInfo.password) {
-                        setPasswordError("رمزعبور جدید تکراری است")
+                // اگر رمز عبور قدیمی وارد شده باشد
+                if (oldPassword !== "") {
+                    // بررسی رمز عبور قدیمی با استفاده از bcrypt
+                    const isOldPasswordCorrect = await bcrypt.compare(oldPassword, userInfo.password);
+
+                    if (!isOldPasswordCorrect) {
+                        setPasswordError("رمزعبور قبلی اشتباه است");
                         return;
                     }
 
-                    await updateUser({
-                        ...userInfo,
-                        name,
-                        address,
-                        ...(newPassword && { password: newPassword }), // اضافه کردن رمز عبور جدید در صورت وجود
-                    }).unwrap();
-                    setUserInfo({
-                        ...userInfo,
-                        name,
-                        address,
-                        ...(newPassword && { password: newPassword }) // به‌روزرسانی رمز عبور جدید در صورت وجود
-                    });
-                toast.success("با موفقیت ویرایش شدید", {position:"bottom-left"})
+                    if (await bcrypt.compare(newPassword, userInfo.password)) {
+                        setPasswordError("رمزعبور جدید تکراری است");
+                        return;
+                    }
+                }
+
+                const updatedUser = {
+                    ...userInfo,
+                    name,
+                    address,
+                    ...(newPassword && { password: await bcrypt.hash(newPassword, 10) })
+                };
+
+                await updateUser(updatedUser).unwrap();
+                setUserInfo(updatedUser);
+                toast.success("با موفقیت ویرایش شدید", { position: "bottom-left" });
+                router.push("/");
             }
-                router.push("/")
-        }catch (err){
-            console.error(err)
-            toast.error("مشکلی از سمت سرور بوجود آمده!", {position:"bottom-left"})
+        } catch (err) {
+            console.error(err);
+            toast.error("مشکلی از سمت سرور بوجود آمده!", { position: "bottom-left" });
         }
     }
 

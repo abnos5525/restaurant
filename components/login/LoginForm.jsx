@@ -9,6 +9,7 @@ import {tokenGenerator} from "@/utils/tokenGenerator";
 import {signatureGenerator} from "@/utils/signatureGenerator";
 import {useContext} from "react";
 import {Context} from "@/context/ContextApp";
+import bcrypt from 'bcryptjs';
 
 const LoginForm = () =>{
 
@@ -20,17 +21,25 @@ const LoginForm = () =>{
 
     const {setUserInfo, dark} = useContext(Context)
 
-    const handleLogin = (values) =>{
+    const handleLogin = async (values) =>{
         try {
             const {username, password} = values
-            const user = data.find(u => u.username === username && u.password === password)
 
-            if(user && user.role === "banned"){
-                toast.error("این نام کاربری مسدود است", {position:"bottom-left"})
-                return
+            const user = data.find(u => u.username === username);
+
+            if (!user) {
+                toast.error("این نام کاربری موجود نیست", { position: "bottom-left" });
+                return;
             }
 
-            if(user){
+            if (user.role === "banned") {
+                toast.error("این نام کاربری مسدود است", { position: "bottom-left" });
+                return;
+            }
+
+            const isMatch = await bcrypt.compare(password, user.password);
+
+            if(isMatch){
                 const token = tokenGenerator()
                 const expirationTime = new Date(Date.now() + 24 * 60 * 60 * 1000) // 24 hours
                 const signature = signatureGenerator(token)
